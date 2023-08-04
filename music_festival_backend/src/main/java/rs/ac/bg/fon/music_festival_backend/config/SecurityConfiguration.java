@@ -29,17 +29,10 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/api/v1/seed**").permitAll()
 
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/movies/**").hasAuthority(ADMIN.getAuthority())
-
-                        .requestMatchers(HttpMethod.POST, "/api/v1/reviews/**").hasAuthority(ORGANIZER.getAuthority())
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/reviews/**").hasAnyAuthority(ORGANIZER.getAuthority(), ADMIN.getAuthority())
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/reviews/**").hasAuthority(ORGANIZER.getAuthority())
-
-                        .requestMatchers(HttpMethod.GET, "/api/v1/watchlist/movies**").hasAuthority(USER.getAuthority())
-                        .requestMatchers(HttpMethod.POST, "/api/v1/watchlist/**").hasAuthority(USER.getAuthority())
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/watchlist/**").hasAuthority(USER.getAuthority())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/bands/**").hasAuthority(ADMIN.getAuthority())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/songs/**").hasAuthority(ADMIN.getAuthority())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/concerts/**").hasAuthority(ORGANIZER.getAuthority())
 
                         .anyRequest().authenticated())
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
