@@ -1,0 +1,16 @@
+.tickets {
+    padding: 20px;
+  }
+  
+  .ticket-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ticket-item {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
