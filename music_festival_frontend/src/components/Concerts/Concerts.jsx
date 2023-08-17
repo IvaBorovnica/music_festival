@@ -3,35 +3,31 @@ import axios from 'axios';
 import './Concerts.css';
 import { useNavigate } from 'react-router-dom'
 
-const concertsData = [
-  {
-    id: 1,
-    location: 'New York',
-    bandName: 'Band X',
-    date: '2023-08-15',
-  },
-  {
-    id: 2,
-    location: 'Los Angeles',
-    bandName: 'Band Y',
-    date: '2023-08-20',
-  },
-  // Add more concerts data as needed
-];
 
 const Concerts = () => {
   const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState({});
+  const [concerts, setConcerts] = useState();
+
 
   useEffect(() => {
-    // Fetch weather data for concerts happening in less than 7 days
-    const today = new Date();
-    const sevenDaysLater = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-    const concertsWithin7Days = concertsData.filter(
-      (concert) => new Date(concert.date) <= sevenDaysLater
-    );
+    const fetchData = async () => {
+      try {
+          const response = await axios.get('http://localhost:8080/api/v1/concerts', {
+              headers: {
+                  Authorization: `Bearer ${localStorage.getItem('token')}`
+              }
+          });
+          console.log(response)
+          setConcerts(response.data)
+      } catch (error) {
+          console.error('Login failed:', error);
+          throw error;
+      }
+  }
+    fetchData();
 
-    concertsWithin7Days.forEach((concert) => {
+    concerts?.forEach((concert) => {
       const apiKey = '2d87539fd120faf52522d5a6f7c24bea';
       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${concert.location}&appid=${apiKey}`;
 
@@ -53,17 +49,18 @@ const Concerts = () => {
     <div className="concerts">
       <h2>List of Concerts</h2>
       <ul className="concert-list">
-        {concertsData.map((concert) => (
+        {concerts?.map((concert) => (
           <li key={concert.id} className="concert-item" onClick={() => navigate('/concert/' + concert.id)}>
             <h3>{concert.bandName}</h3>
             <p>Location: {concert.location}</p>
-            <p>Date: {concert.date}</p>
-            {weatherData[concert.id] && <p>Weather: {weatherData[concert.id]}</p>}
+            <p>Band: {concert.band.name}</p>
+            {/* {weatherData[concert.id] && <p>Weather: {weatherData[concert.id]}</p>} */}
+            <p>Weather: {weatherData[concert.id]}</p>
             <button>Buy Ticket</button>
           </li>
         ))}
       </ul>
-      <button className="add-concert-button">Add New Concert</button>
+      {/* <button className="add-concert-button">Add New Concert</button> */}
     </div>
   );
 };

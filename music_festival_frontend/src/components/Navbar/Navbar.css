@@ -1,9 +1,10 @@
 /* Navbar.css */
 .navbar {
     background-color: #f1f1f1;
-    padding: 10px;
+    /* padding: 10px; */
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
   
   .left-links {
@@ -26,3 +27,16 @@
     color: #555;
   }
   
+  /* .link-box{
+    background-color: black;
+  } */
+
+  .nav-btn{
+    background-color: transparent;
+    color: #696969;
+  }
+
+  .nav-btn:hover{
+    background-color: transparent;
+    color: black;
+  }

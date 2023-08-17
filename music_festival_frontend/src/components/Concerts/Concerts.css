@@ -1,5 +1,6 @@
 .tickets {
     padding: 20px;
+    width: 800px;
   }
   
   .ticket-list {
@@ -12,5 +13,9 @@
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
+  }
+
+  .concerts{
+    width: 800px;
   }
   

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios
 
 import './Auth.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,8 +30,10 @@ const Login = () => {
     }).then((response) => {
       console.log(response);
       localStorage.setItem('token', response.data.token);
+      navigate('/concerts');
       // localStorage.setItem('isAdmin', response.data.isAdmin);
       // window.location.href = "/Obavestenja";
+
     }, (error) => {
       console.log(error);
       // setPoruka("Neispravno korisnicko ime ili sifra!");
