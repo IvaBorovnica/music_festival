@@ -3,7 +3,7 @@ package rs.ac.bg.fon.music_festival_backend.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -22,6 +22,8 @@ public class Concert {
     private Long id;
 
     private String location;
+
+    private LocalDateTime time;
 
     @ManyToOne
     private Band band;

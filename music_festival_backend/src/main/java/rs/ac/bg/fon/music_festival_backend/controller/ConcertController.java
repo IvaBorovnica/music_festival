@@ -24,6 +24,10 @@ public class ConcertController {
     public Concert getById(@PathVariable Long id) {
         return concertService.getById(id);
     }
+    @PostMapping
+    public Concert addConcert(@RequestBody Concert concert) {
+        return concertService.addConcert(concert);
+    }
 
 
 }

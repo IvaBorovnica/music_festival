@@ -21,4 +21,8 @@ public class ConcertService {
     public Concert getById(Long id) {
         return concertRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
+
+    public Concert addConcert(Concert concert) {
+        return concertRepository.save(concert);
+    }
 }

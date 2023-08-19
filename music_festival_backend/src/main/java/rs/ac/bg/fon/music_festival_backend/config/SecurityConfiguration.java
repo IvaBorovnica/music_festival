@@ -32,7 +32,10 @@ public class SecurityConfiguration {
 
                         .requestMatchers(HttpMethod.POST, "/api/v1/bands/**").hasAuthority(ADMIN.getAuthority())
                         .requestMatchers(HttpMethod.POST, "/api/v1/songs/**").hasAuthority(ADMIN.getAuthority())
+
                         .requestMatchers(HttpMethod.POST, "/api/v1/concerts/**").hasAuthority(ORGANIZER.getAuthority())
+
+
 
                         .anyRequest().authenticated())
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
