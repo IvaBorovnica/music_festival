@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // Import Axios
 
 import './Auth.css';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setRole, setIsLoggedIn, isLoggedIn }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  
+  useEffect(() => {
+    localStorage.removeItem('token');
+    setRole(null);
+    setIsLoggedIn(false)
+  }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,6 +36,9 @@ const Login = () => {
     }).then((response) => {
       console.log(response);
       localStorage.setItem('token', response.data.token);
+      setRole(response.data.role);
+      setIsLoggedIn(true)
+      localStorage.setItem('role', response.data.role)
       navigate('/concerts');
       // localStorage.setItem('isAdmin', response.data.isAdmin);
       // window.location.href = "/Obavestenja";
