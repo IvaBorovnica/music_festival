@@ -1,6 +1,8 @@
 package rs.ac.bg.fon.music_festival_backend.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import rs.ac.bg.fon.music_festival_backend.domain.Concert;
 import rs.ac.bg.fon.music_festival_backend.repository.ConcertRepository;
@@ -14,8 +16,8 @@ public class ConcertService {
 
     private final ConcertRepository concertRepository;
 
-    public List<Concert> getAll() {
-        return concertRepository.findAll();
+    public Page<Concert> getAll(Pageable pageable) {
+        return concertRepository.findAll(pageable);
     }
 
     public Concert getById(Long id) {

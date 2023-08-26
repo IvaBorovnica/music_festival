@@ -28,7 +28,8 @@ public class Concert {
     @ManyToOne
     private Band band;
 
-    @OneToMany
+    @ManyToMany
     private List<Song> setlist;
 
+    private Integer price;
 }

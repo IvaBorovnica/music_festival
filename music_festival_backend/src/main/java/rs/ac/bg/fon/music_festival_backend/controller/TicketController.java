@@ -8,7 +8,7 @@ import rs.ac.bg.fon.music_festival_backend.service.TicketService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/songs")
+@RequestMapping("/api/v1/tickets")
 @CrossOrigin
 @RequiredArgsConstructor
 public class TicketController {

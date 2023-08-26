@@ -1,6 +1,8 @@
 package rs.ac.bg.fon.music_festival_backend.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.bg.fon.music_festival_backend.domain.Concert;
 import rs.ac.bg.fon.music_festival_backend.service.ConcertService;
@@ -16,8 +18,8 @@ public class ConcertController {
     private final ConcertService concertService;
 
     @GetMapping
-    public List<Concert> getAll() {
-        return concertService.getAll();
+    public Page<Concert> getAll(Pageable pageable) {
+        return concertService.getAll(pageable);
     }
 
     @GetMapping("/{id}")

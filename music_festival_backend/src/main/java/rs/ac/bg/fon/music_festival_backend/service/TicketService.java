@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class TicketService {
 
+    private final ConcertService concertService;
     private final TicketRepository ticketRepository;
     private final UserService userService;
 
@@ -37,6 +38,8 @@ public class TicketService {
     }
 
     public Ticket buyTicket(Ticket ticket) {
+        Concert concert = concertService.getById(ticket.getConcert().getId());
+        ticket.setPrice(concert.getPrice());
         User currentlyLoggedInUser = userService.getCurrentlyLoggedInUser();
         ticket.setBuyer(currentlyLoggedInUser);
         if (userAlreadyHasTicket(currentlyLoggedInUser, ticket.getConcert())) {
