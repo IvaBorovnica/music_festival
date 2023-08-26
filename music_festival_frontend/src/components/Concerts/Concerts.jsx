@@ -8,7 +8,8 @@ const Concerts = ({ role }) => {
   const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState({});
   const [concerts, setConcerts] = useState();
-
+  const [totalPages, setTotalPages] = useState();
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,11 +17,15 @@ const Concerts = ({ role }) => {
           const response = await axios.get('http://localhost:8080/api/v1/concerts', {
               headers: {
                   Authorization: `Bearer ${localStorage.getItem('token')}`
-              }
+              }, params: {
+                size: 3,
+                page: currentPage
+            }
           });
           // console.log(response)
-          setConcerts(response.data)
-          response.data.forEach((concert) => {
+          setTotalPages(response.data.totalPages);
+          setConcerts(response.data.content)
+          response.data.content.forEach((concert) => {
 
             const apiKey = '2d87539fd120faf52522d5a6f7c24bea';
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${concert.location}&appid=${apiKey}`;
@@ -47,7 +52,7 @@ const Concerts = ({ role }) => {
     fetchData();
 
 
-  }, []);
+  }, [currentPage]);
 
   function buyTicket(id){
 
@@ -71,15 +76,24 @@ const Concerts = ({ role }) => {
       .then((response) => {
         // Handle the successful addition here, such as displaying a success message or redirecting to another page
         console.log('Ticket added successfully!', response.data);
-
+        navigate('/tickets');
         // Redirect to '/bands' upon successful addition
         // window.location.href = '/bands';
       })
       .catch((error) => {
         // Handle addition errors here, such as displaying an error message
-        console.error('Failed to add ticket:', error);
+        alert('Failed to add ticket: '+ error.response.data.body.detail);
+
       });
   }
+
+  const nextPage = () => {
+    setCurrentPage((currentPage) => currentPage + 1);
+};
+
+const previousPage = () => {
+    setCurrentPage((currentPage) => currentPage - 1);
+};
 
   return (
     <div className="concerts">
@@ -100,6 +114,22 @@ const Concerts = ({ role }) => {
           );
         })}
       </ul>
+      <div className="pagination">
+                <button
+                    onClick={previousPage}
+                    disabled={currentPage === 0}
+                    className="pagination-button"
+                >
+                    Previous
+                </button>
+                <button
+                    onClick={nextPage}
+                    disabled={currentPage === totalPages - 1}
+                    className="pagination-button"
+                >
+                    Next
+                </button>
+            </div>
     </div>
   );
   

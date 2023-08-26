@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios
 
 import './Band.css';
+import { useNavigate } from 'react-router-dom';
 
 const NewBand = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [formationYear, setYearFormed] = useState('');
   const [website, setWebsite] = useState('');
@@ -33,7 +35,7 @@ const NewBand = () => {
       .then((response) => {
         // Handle the successful addition here, such as displaying a success message or redirecting to another page
         console.log('Band added successfully!', response.data);
-
+        navigate('/bands');
         // Redirect to '/bands' upon successful addition
         // window.location.href = '/bands';
       })
@@ -52,8 +54,8 @@ const NewBand = () => {
           <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter band name" />
         </div>
         <div className="form-group">
-          <label htmlFor="genre">Website:</label>
-          <input type="text" id="genre" name="genre" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="Enter band genre" />
+          <label htmlFor="website">Website:</label>
+          <input type="text" id="website" name="website" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="Enter band website" />
         </div>
         <div className="form-group">
           <label htmlFor="yearFormed">Year Formed:</label>

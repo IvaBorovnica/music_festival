@@ -111,13 +111,13 @@ const Analytics = () => {
         {groupBy === 'location' || groupBy === 'band' ? (
           <div className="chart">
             <h3>Income by {groupBy === 'location' ? 'Location' : 'Band'}</h3>
-            <Bar data={chartData} options={chartOptions} />
+            <Bar data={chartData}/>
           </div>
         ) : (
           <div className="chart">
             <h3>Income Distribution by Band</h3>
             <div className="pie-chart">
-                <Pie data={chartData} options={chartOptions} />
+                <Pie data={chartData} />
             </div>
           </div>
         )}

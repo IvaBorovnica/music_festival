@@ -49,7 +49,7 @@ const Setlist = ({ songs, setSetlist, setlist}) => {
                 </tr>
             </thead>
             <tbody>
-                {setlist?.map((setlistSong) => <tr><td>{setlistSong.song.title}</td><td>{setlistSong.song.length}</td><td><button type="button" class="btn btn-outline-danger" style={{backgroundColor: "red"}} onClick={() => removeFromSetlist(setlistSong.order)}>Remove</button></td></tr>)}
+                {setlist?.map((setlistSong) => <tr><td>{setlistSong.song.title}</td><td>{setlistSong.song.length}</td><td><button className='remove-btn' type="button" class="btn btn-outline-danger" onClick={() => removeFromSetlist(setlistSong.order)}>Remove</button></td></tr>)}
             </tbody>
         </table>
     </div>

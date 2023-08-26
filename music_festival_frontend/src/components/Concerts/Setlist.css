@@ -94,4 +94,13 @@
     background-color: #f0f0f0;
     transform: translateY(-2px);
   }
+
+  .remove-btn{
+    background-color: red;
+    color: white;
+  }
+
+  .remove-btn:hover{
+    background-color: rgb(187, 0, 0);
+  }
   

@@ -29,13 +29,12 @@ const SetlistUser = () => {
             <table className="table">
             <thead className="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Length</th>
                 </tr>
             </thead>
             <tbody>
-                {concert?.setlist.map((song) => <tr><td>{song.id}</td><td>{song.title}</td><td>{song.length}</td></tr>)}
+                {concert?.setlist.map((song) => <tr><td>{song.title}</td><td>{song.length}</td></tr>)}
             </tbody>
         </table>
         </div>

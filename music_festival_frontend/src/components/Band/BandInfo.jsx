@@ -128,6 +128,7 @@ const fetchBand = async () => {
     // Make the POST request using Axios with the token in the headers
     axios.post('http://localhost:8080/api/v1/concerts', newConcertData, config)
       .then((response) => {
+        navigate('/concerts')
         // Handle the successful addition here, such as displaying a success message or redirecting to another page
         console.log('Band added successfully!', response.data);
 
@@ -170,9 +171,10 @@ const fetchBand = async () => {
         <input type="time" id="time" onChange={(event) => setTime(event.target.value)} />
         <label>Price</label>
         <input type="number" id="price" onChange={(event) => setPrice(event.target.value)} />
-      </div><button onClick={() => addConcert()}>Add</button>
+      </div>
       
-      <Setlist band={band} songs={songs} setSetlist={setSetlist} setlist={setlist}/></>}
+      <Setlist band={band} songs={songs} setSetlist={setSetlist} setlist={setlist}/>
+      <button onClick={() => addConcert()}>Add</button></>}
     </div>
   );
 }
