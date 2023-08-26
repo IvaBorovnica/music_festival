@@ -12,6 +12,7 @@ import Tickets from './components/Concerts/Tickets';
 import { useEffect, useState } from 'react';
 import Setlist from './components/Concerts/Setlist';
 import SetlistUser from './components/Band/SetlistUser';
+import Analytics from './components/Concerts/Analytics';
 
 function App() {
   const [ role, setRole ] = useState(null);
@@ -41,6 +42,7 @@ function App() {
           <Route path='/concerts' element={<Concerts role={ role }/>}/>
           <Route path='/concert/:id' element={<ConcertInfo role={ role }/>}/>
           <Route path='/tickets' element={<Tickets role={ role }/>}/>
+          <Route path='/analytics' element={<Analytics/>}/>
           <Route path='/concerts/:id' element={<SetlistUser role = {role}/>}/>
         </Routes>
       </Router>

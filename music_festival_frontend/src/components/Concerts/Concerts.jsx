@@ -49,8 +49,36 @@ const Concerts = ({ role }) => {
 
   }, []);
 
-  function buyTicket(){
+  function buyTicket(id){
 
+    const ticketData = {
+      concert: {
+        id
+      }
+    };
+    // Get the token from local storage
+    const token = localStorage.getItem('token');
+
+    // Set the token as a header in the Axios request
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    // Make the POST request using Axios with the token in the headers
+    axios.post('http://localhost:8080/api/v1/tickets', ticketData, config)
+      .then((response) => {
+        // Handle the successful addition here, such as displaying a success message or redirecting to another page
+        console.log('Ticket added successfully!', response.data);
+
+        // Redirect to '/bands' upon successful addition
+        // window.location.href = '/bands';
+      })
+      .catch((error) => {
+        // Handle addition errors here, such as displaying an error message
+        console.error('Failed to buy ticket:', error);
+      });
   }
 
   return (
@@ -66,7 +94,7 @@ const Concerts = ({ role }) => {
               <p>Location: {concert.location}</p>
               <p>Band: {concert.band.name}</p>
               <p>Weather: {weatherDescription}</p>
-              <button onClick={() => buyTicket(concert.id)}>Buy Ticket</button>
+              {role === 'USER' && <button onClick={() => buyTicket(concert.id)}>Buy Ticket</button>}
               {role === 'ORGANIZER' && <button onClick={() => navigate(''+ concert.id)}>Setlist</button>}
             </li>
           );
