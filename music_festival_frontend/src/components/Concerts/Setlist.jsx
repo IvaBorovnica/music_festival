@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import './Concerts.css';
+import './Setlist.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -25,32 +25,31 @@ const Setlist = ({ songs, setSetlist, setlist}) => {
     return ( 
         <div className="setlist">
             <div className='PrijavaIspita'>
-        <h1>Prijava ispita</h1>
+        <h1>All songs</h1>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Predmet</th>
-                    <th scope="col">ESPB</th>
-                    <th scope="col">Prijavi</th>
+                    <th>#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Length</th>
+                    <th scope="col">Add to setlist</th>
                 </tr>
             </thead>
             <tbody>
                 {songs?.map((song) => <tr><td>{song.id}</td><td>{song.title}</td><td>{song.length}</td><td><button type="button" class="btn btn-outline-danger" onClick={() => addToSetlist(song)}>Add</button></td></tr>)}
             </tbody>
         </table>
-        <h1>Prijavljeni ispiti</h1>
+        <h1>Create setlist</h1>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Predmet</th>
-                    <th scope="col">ESPB</th>
-                    <th scope="col">Ponisti prijavu</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Length</th>
+                    <th scope="col">Remove from setlist</th>
                 </tr>
             </thead>
             <tbody>
-                {setlist?.map((setlistSong) => <tr><td>{setlistSong.song.title}</td><td>{setlistSong.song.length}</td><td><button type="button" class="btn btn-outline-danger" onClick={() => removeFromSetlist(setlistSong.order)}>X</button></td></tr>)}
+                {setlist?.map((setlistSong) => <tr><td>{setlistSong.song.title}</td><td>{setlistSong.song.length}</td><td><button type="button" class="btn btn-outline-danger" style={{backgroundColor: "red"}} onClick={() => removeFromSetlist(setlistSong.order)}>Remove</button></td></tr>)}
             </tbody>
         </table>
     </div>

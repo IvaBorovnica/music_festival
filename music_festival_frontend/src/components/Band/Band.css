@@ -1,66 +1,67 @@
-/* NewBand.css */
+/* Band.css */
+
 .new-band {
-  max-width: 400px;
-  margin: 0 auto;
+  background-color: #f5f5f5;
   padding: 20px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 600px;
 }
 
 .new-band h2 {
-  text-align: center;
-}
-
-.form-group {
+  font-size: 24px;
   margin-bottom: 20px;
 }
 
+.form-group {
+  margin-bottom: 15px;
+}
+
 .form-group label {
+  font-weight: bold;
   display: block;
   margin-bottom: 5px;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-button {
-  display: block;
+.form-group input {
   width: 100%;
   padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: 16px;
-  background-color: #007bff;
+  box-sizing: border-box; /* Fix for input width */
+}
+
+button[type="submit"] {
+  background-color: #373737; /* Changed to green color */
   color: #fff;
   border: none;
   border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #0056b3;
+button[type="submit"]:hover {
+  background-color: #000000; /* Darker green on hover */
 }
 
-/* Bands.css */
+/* Band.css */
+
 .bands {
-  max-width: 600px;
-  margin: 0 auto;
+  background-color: #f5f5f5;
   padding: 20px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 600px;
 }
 
 .bands h2 {
-  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .band-list {
@@ -69,50 +70,27 @@ button:hover {
 }
 
 .band-item {
-  margin-bottom: 20px;
-  padding: 10px;
+  background-color: #ffffff;
   border: 1px solid #ccc;
-  background-color: #fff;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.band-item:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-3px);
 }
 
 .band-item h3 {
-  margin: 0;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .band-item p {
-  margin: 5px 0;
-}
-
-/* BandInfo.css */
-.band-info {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-}
-
-.band-info h2 {
-  text-align: center;
-}
-
-.band-info p {
-  margin: 5px 0;
-}
-
-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
   font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 15px;
+  margin: 5px 0;
 }
 
-button:hover {
-  background-color: #0056b3;
-}

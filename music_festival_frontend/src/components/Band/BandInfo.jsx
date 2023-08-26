@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Band.css';
+import './BandInfo.css';
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Setlist from '../Concerts/Setlist';
@@ -142,9 +142,9 @@ const fetchBand = async () => {
 
   return (
     <div className="band-info">
-      <h1>{band?.name} {id}</h1>
-      <h3>{band?.website}</h3>
-      <h3>{band?.formationYear}</h3>
+      <h1>{band?.name}</h1>
+      <h3>Website: {band?.website}</h3>
+      <h3>Formation year: {band?.formationYear}</h3>
       <h3>Songs</h3>
       {songs?.map((song) => (
         <div>{song.title} ({song.length})</div>
@@ -161,8 +161,6 @@ const fetchBand = async () => {
       
       {role === 'ORGANIZER' && <><h3>Concerts</h3>
       <div className="input-box">
-        <label >Setlist</label>
-        {/* <input type="text" onChange={(event) => setTitle(event.target.value)}/> */}
       </div><div className="input-box">
         <label >Location</label>
         <input type="text" onChange={(event) => setLocation(event.target.value)}/>
@@ -172,8 +170,9 @@ const fetchBand = async () => {
         <input type="time" id="time" onChange={(event) => setTime(event.target.value)} />
         <label>Price</label>
         <input type="number" id="price" onChange={(event) => setPrice(event.target.value)} />
-      </div><button onClick={() => addConcert()}>Add</button></>}
-      <Setlist band={band} songs={songs} setSetlist={setSetlist} setlist={setlist}/>
+      </div><button onClick={() => addConcert()}>Add</button>
+      
+      <Setlist band={band} songs={songs} setSetlist={setSetlist} setlist={setlist}/></>}
     </div>
   );
 }

@@ -1,0 +1,50 @@
+/* Concerts.css */
+
+.analytics {
+    text-align: center;
+    padding: 20px;
+    padding-top: 50px;
+  }
+  
+  .group-by-select {
+    margin-bottom: 20px;
+  }
+  
+  .group-by-select label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .group-by-select select {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .charts {
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    align-items: center; /* Center align horizontally */
+  }
+  
+  .chart {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 70%;
+  }
+  
+  .chart h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .pie-chart {
+    text-align: center;
+    width: 100%;
+    max-width: 80%; /* Set maximum width to 100% */
+    margin: 0 auto;
+  }
+  

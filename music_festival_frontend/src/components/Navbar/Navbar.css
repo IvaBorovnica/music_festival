@@ -1,42 +1,53 @@
 /* Navbar.css */
+
 .navbar {
-    background-color: #f1f1f1;
-    /* padding: 10px; */
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .left-links {
-    display: flex;
-    align-items: center;
-  }
-  
-  .right-links {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar a {
-    color: #333;
-    text-decoration: none;
-    margin-left: 15px;
-  }
-  
-  .navbar a:hover {
-    color: #555;
-  }
-  
-  /* .link-box{
-    background-color: black;
-  } */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+  z-index: 100; /* Ensure it's on top of other content */
+}
 
-  .nav-btn{
-    background-color: transparent;
-    color: #696969;
-  }
+.left-links {
+  display: flex;
+  align-items: center;
+}
 
-  .nav-btn:hover{
-    background-color: transparent;
-    color: black;
-  }
+.nav-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-right: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.right-links {
+  display: flex;
+  align-items: center;
+}
+
+.right-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.right-links a:hover {
+  color: #ddd;
+}

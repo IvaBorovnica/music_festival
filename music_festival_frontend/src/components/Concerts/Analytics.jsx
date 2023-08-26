@@ -1,23 +1,48 @@
 import axios from "axios";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ChartToolTip,
+    ArcElement,
+    LineElement,
+    PointElement
+} from 'chart.js';
+import { Bar, Pie } from "react-chartjs-2";
 import React, { useState, useEffect } from "react";
+import "./Analytics.css";
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ArcElement,
+    PointElement,
+    LineElement
+);
 
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
+//   CategoryScale,
+//   LinearScale,
+//   BarElement,
+//   Title,
+//   Tooltip,
+//   Legend
+CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ArcElement,
+    PointElement,
+    LineElement
 );
 
 const Analytics = () => {
@@ -79,11 +104,29 @@ const Analytics = () => {
         <select id="group-by" value={groupBy} onChange={handleGroupByChange}>
           <option value="location">Location</option>
           <option value="band">Band Name</option>
+          <option value="pie">Pie Chart</option>
         </select>
       </div>
-      <Bar data={chartData} options={chartOptions} />
+      <div className="charts">
+        {groupBy === 'location' || groupBy === 'band' ? (
+          <div className="chart">
+            <h3>Income by {groupBy === 'location' ? 'Location' : 'Band'}</h3>
+            <Bar data={chartData} options={chartOptions} />
+          </div>
+        ) : (
+          <div className="chart">
+            <h3>Income Distribution by Band</h3>
+            <div className="pie-chart">
+                <Pie data={chartData} options={chartOptions} />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
+  
+  
+  
 };
 
 export default Analytics;

@@ -32,7 +32,7 @@ const Concerts = ({ role }) => {
                 // alert(response.data)
                 setWeatherData((prevData) => ({
                   ...prevData,
-                  [concert.id]: response.data.weather[0].description,
+                  [concert.id]: '' + response.data.weather[0].description,
                 }));
               })
               .catch((error) => {
@@ -77,7 +77,7 @@ const Concerts = ({ role }) => {
       })
       .catch((error) => {
         // Handle addition errors here, such as displaying an error message
-        console.error('Failed to buy ticket:', error);
+        console.error('Failed to add ticket:', error);
       });
   }
 

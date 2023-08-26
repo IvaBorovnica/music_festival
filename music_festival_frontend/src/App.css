@@ -1,7 +1,19 @@
+/* App.css */
+
 .App {
-  text-align: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+/* Add more specific styling for the content container */
+.content-container {
   width: 100%;
-  height: 100vh;
+  max-width: 1200px; /* Adjust as needed */
+  padding: 20px;
+  box-sizing: border-box;
 }

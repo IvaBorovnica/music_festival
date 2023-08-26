@@ -31,6 +31,7 @@ function App() {
     <div className="App">
       <Router>
         <Navbar role = {role} isLoggedIn={isLoggedIn}/>
+        <div className="content-container">
         <Routes>
         {/* <Route path='/' element={<Login/>}/> */}
         <Route path='/' element={<Login setRole={ setRole } setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>}/>
@@ -44,7 +45,7 @@ function App() {
           <Route path='/tickets' element={<Tickets role={ role }/>}/>
           <Route path='/analytics' element={<Analytics/>}/>
           <Route path='/concerts/:id' element={<SetlistUser role = {role}/>}/>
-        </Routes>
+        </Routes></div>
       </Router>
     </div>
   );

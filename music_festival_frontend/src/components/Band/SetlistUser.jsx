@@ -30,9 +30,8 @@ const SetlistUser = () => {
             <thead className="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Predmet</th>
-                    <th scope="col">ESPB</th>
-                    <th scope="col">Prijavi</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Length</th>
                 </tr>
             </thead>
             <tbody>
