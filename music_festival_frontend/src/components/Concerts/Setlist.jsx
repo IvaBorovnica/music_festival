@@ -5,14 +5,7 @@ import { useEffect, useState } from 'react';
 
 
 const Setlist = ({ songs, setSetlist, setlist}) => {
-    // const [songs, setSongs] = useState();
-    // const [concert, setConcert] = useState();
-    
-    // const [setlist, setSetlist] = useState([]);
     function addToSetlist(song){
-        // setSetlist(setlist.push(song))
-        // alert(song.id)
-        // setSetlist(songs)
         setSetlist([...setlist, {order: setlist.length + 1, song: song}])
     }
 

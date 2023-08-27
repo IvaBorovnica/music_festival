@@ -28,12 +28,6 @@ ChartJS.register(
 );
 
 ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   BarElement,
-//   Title,
-//   Tooltip,
-//   Legend
 CategoryScale,
     LinearScale,
     BarElement,
@@ -53,7 +47,7 @@ const Analytics = () => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
-  const [groupBy, setGroupBy] = useState('location'); // Default group by location
+  const [groupBy, setGroupBy] = useState('location');
 
   useEffect(() => {
     const fetchData = async () => {

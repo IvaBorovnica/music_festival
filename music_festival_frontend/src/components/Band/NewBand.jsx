@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 
 import './Band.css';
 import { useNavigate } from 'react-router-dom';
@@ -13,34 +13,26 @@ const NewBand = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Create a data object containing the new band information
     const newBandData = {
       name,
       website,
       formationYear,
     };
 
-    // Get the token from local storage
     const token = localStorage.getItem('token');
 
-    // Set the token as a header in the Axios request
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
 
-    // Make the POST request using Axios with the token in the headers
     axios.post('http://localhost:8080/api/v1/bands', newBandData, config)
       .then((response) => {
-        // Handle the successful addition here, such as displaying a success message or redirecting to another page
         console.log('Band added successfully!', response.data);
         navigate('/bands');
-        // Redirect to '/bands' upon successful addition
-        // window.location.href = '/bands';
       })
       .catch((error) => {
-        // Handle addition errors here, such as displaying an error message
         console.error('Failed to add band:', error);
       });
   };

@@ -22,7 +22,6 @@ const Concerts = ({ role }) => {
                 page: currentPage
             }
           });
-          // console.log(response)
           setTotalPages(response.data.totalPages);
           setConcerts(response.data.content)
           response.data.content.forEach((concert) => {
@@ -33,8 +32,6 @@ const Concerts = ({ role }) => {
             axios
               .get(apiUrl)
               .then((response) => {
-                // alert(JSON.stringify(response.data.weather));
-                // alert(response.data)
                 setWeatherData((prevData) => ({
                   ...prevData,
                   [concert.id]: '' + response.data.weather[0].description,
@@ -61,27 +58,20 @@ const Concerts = ({ role }) => {
         id
       }
     };
-    // Get the token from local storage
     const token = localStorage.getItem('token');
 
-    // Set the token as a header in the Axios request
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
 
-    // Make the POST request using Axios with the token in the headers
     axios.post('http://localhost:8080/api/v1/tickets', ticketData, config)
       .then((response) => {
-        // Handle the successful addition here, such as displaying a success message or redirecting to another page
         console.log('Ticket added successfully!', response.data);
         navigate('/tickets');
-        // Redirect to '/bands' upon successful addition
-        // window.location.href = '/bands';
       })
       .catch((error) => {
-        // Handle addition errors here, such as displaying an error message
         alert('Failed to add ticket: '+ error.response.data.body.detail);
 
       });

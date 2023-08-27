@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Auth.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
@@ -13,7 +15,6 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Create a data object containing the user's information
     const userData = {
       firstName,
       lastName,
@@ -23,16 +24,6 @@ const Register = () => {
       role,
     };
 
-    // Make the POST request using Axios
-    // axios.post('http://localhost:8080/api/v1/auth/register', userData)
-    //   .then((response) => {
-    //     // Handle the successful response here, such as displaying a success message or redirecting to another page
-    //     console.log('Registration successful!', response.data);
-    //   })
-    //   .catch((error) => {
-    //     // Handle errors here, such as displaying an error message
-    //     console.error('Registration failed:', error);
-    //   });
     axios({
       method: 'post',
       url: '/api/v1/auth/register',
@@ -46,13 +37,10 @@ const Register = () => {
         role: role
       }
     }).then((response) => {
-      console.log(response);
       localStorage.setItem('token', response.data.token);
-      // localStorage.setItem('isAdmin', response.data.isAdmin);
-      // window.location.href = "/Obavestenja";
+      navigate('/login');
     }, (error) => {
       console.log(error);
-      // setPoruka("Neispravno korisnicko ime ili sifra!");
     })
   };
 
@@ -89,7 +77,6 @@ const Register = () => {
           </select>
         </div>
         <button type="submit">Register</button>
-        {/* <button onClick={() => alert(email)}>register</button> */}
       </form>
     </div>
   );

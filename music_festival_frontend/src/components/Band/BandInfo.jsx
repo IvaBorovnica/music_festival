@@ -74,33 +74,25 @@ const fetchBand = async () => {
         id
       }
     };
-    // Get the token from local storage
     const token = localStorage.getItem('token');
 
-    // Set the token as a header in the Axios request
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
 
-    // Make the POST request using Axios with the token in the headers
     axios.post('http://localhost:8080/api/v1/songs', newSongData, config)
       .then((response) => {
-        // Handle the successful addition here, such as displaying a success message or redirecting to another page
         console.log('Band added successfully!', response.data);
-
-        // Redirect to '/bands' upon successful addition
-        // window.location.href = '/bands';
       })
       .catch((error) => {
-        // Handle addition errors here, such as displaying an error message
         console.error('Failed to add band:', error);
       });
   }
 
   const [location, setLocation] = useState();
-  const [date, setDate] = useState(); // Renamed "time" to "date" for clarity
+  const [date, setDate] = useState(); 
   const [time, setTime] = useState();
 
   function addConcert(){
@@ -108,35 +100,28 @@ const fetchBand = async () => {
 
     const newConcertData = {
       location: location,
-      time: formattedDateTime, // Use the formatted date and time here
+      time: formattedDateTime,
       band: {
         id
       },
       price,
       setlist: setlist.map((setlistSong) => setlistSong.song)
     };
-    // Get the token from local storage
     const token = localStorage.getItem('token');
 
-    // Set the token as a header in the Axios request
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
 
-    // Make the POST request using Axios with the token in the headers
     axios.post('http://localhost:8080/api/v1/concerts', newConcertData, config)
       .then((response) => {
         navigate('/concerts')
-        // Handle the successful addition here, such as displaying a success message or redirecting to another page
         console.log('Band added successfully!', response.data);
 
-        // Redirect to '/bands' upon successful addition
-        // window.location.href = '/bands';
       })
       .catch((error) => {
-        // Handle addition errors here, such as displaying an error message
         console.error('Failed to add band:', error);
       });
   }

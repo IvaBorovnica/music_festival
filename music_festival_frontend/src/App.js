@@ -41,7 +41,7 @@ function App() {
           <Route path='/bands' element={<Bands role={ role }/>}/>
           <Route path='/band/:id' element={<BandInfo role={ role }/>}/>
           <Route path='/concerts' element={<Concerts role={ role }/>}/>
-          <Route path='/concert/:id' element={<ConcertInfo role={ role }/>}/>
+          {/* <Route path='/concert/:id' element={<ConcertInfo role={ role }/>}/> */}
           <Route path='/tickets' element={<Tickets role={ role }/>}/>
           <Route path='/analytics' element={<Analytics/>}/>
           <Route path='/concerts/:id' element={<SetlistUser role = {role}/>}/>

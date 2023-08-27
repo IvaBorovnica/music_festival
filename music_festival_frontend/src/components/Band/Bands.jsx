@@ -35,23 +35,6 @@ const Bands = () => {
     console.log(bandsData)
 }, []);
 
-  // const bandsData = [
-  //   {
-  //     id: 1,
-  //     name: 'Band A',
-  //     genre: 'Rock',
-  //     yearFormed: 2005,
-  //     members: ['John', 'Mike', 'Sarah'],
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Band B',
-  //     genre: 'Pop',
-  //     yearFormed: 2010,
-  //     members: ['Alice', 'Bob', 'Tom'],
-  //   },
-  //   // Add more bands data as needed
-  // ];
 
   const [selectedBand, setSelectedBand] = useState(null);
 
@@ -75,7 +58,6 @@ const Bands = () => {
           </li>
         ))}
       </ul>
-      {/* {selectedBand && <BandInfo band={selectedBand} />} */}
     </div>
   );
 }

@@ -8,6 +8,7 @@ const Login = ({ setRole, setIsLoggedIn, isLoggedIn }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
   
   useEffect(() => {
     localStorage.removeItem('token');
@@ -18,13 +19,11 @@ const Login = ({ setRole, setIsLoggedIn, isLoggedIn }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Create a data object containing the user's login credentials
     const loginData = {
       username,
       password,
     };
 
-    // Make the POST request using Axios
     axios({
       method: 'post',
       url: '/api/v1/auth/login',
@@ -40,12 +39,10 @@ const Login = ({ setRole, setIsLoggedIn, isLoggedIn }) => {
       setIsLoggedIn(true)
       localStorage.setItem('role', response.data.role)
       navigate('/concerts');
-      // localStorage.setItem('isAdmin', response.data.isAdmin);
-      // window.location.href = "/Obavestenja";
 
     }, (error) => {
       console.log(error);
-      // setPoruka("Neispravno korisnicko ime ili sifra!");
+      setMessage("Wrong username or password!");
     })
   };
 
@@ -61,8 +58,8 @@ const Login = ({ setRole, setIsLoggedIn, isLoggedIn }) => {
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" />
         </div>
+        <p style={{color: "red"}}>{message}</p>
         <button type="submit">Login</button>
-        {/* <button onClick={() => alert(password)}>test</button> */}
       </form>
     </div>
   );
